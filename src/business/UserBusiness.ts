@@ -139,7 +139,7 @@ export class UserBusiness {
         return output
     }
 
-    public deleteUser = async (input: DeleteUserInputDTO): Promise<void> => {
+    public deleteUser = async (input: DeleteUserInputDTO)=> {
         const { idToDelete, token } = input
 
         if (typeof token !== "string") {
@@ -163,6 +163,9 @@ export class UserBusiness {
         }
 
         await this.userDatabase.deleteById(idToDelete)
+        return {
+            message: 'usuario deletado'
+        }
     }
 
     public getById = async (input: GetByIdInputDTO): Promise<GetByIdOutputDTO> => {
